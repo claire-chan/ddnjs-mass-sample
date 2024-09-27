@@ -119,7 +119,44 @@
         "ImageParameterOptions": [
         {
             "Name": "IP_0",
-            "ScaleDownThreshold": 512
+            "ScaleDownThreshold": 512,
+            BinarizationModes: [
+              {
+                BinarizationThreshold: -1,
+                BlockSizeX: 5,
+                BlockSizeY: 5,
+                EnableFillBinaryVacancy: 0,
+                GrayscaleEnhancementModesIndex: -1,
+                Mode: "BM_LOCAL_BLOCK",
+                MorphOperation: "Close",
+                MorphOperationKernelSizeX: 3,
+                MorphOperationKernelSizeY: 3,
+                MorphShape: "Rectangle",
+                ThresholdCompensation: 4,
+              },
+              {
+                BinarizationThreshold: -1,
+                BlockSizeX: 7,
+                BlockSizeY: 7,
+                EnableFillBinaryVacancy: 0,
+                GrayscaleEnhancementModesIndex: -1,
+                Mode: "BM_LOCAL_BLOCK",
+                MorphOperation: "Close",
+                MorphOperationKernelSizeX: 3,
+                MorphOperationKernelSizeY: 3,
+                MorphShape: "Rectangle",
+                ThresholdCompensation: 4,
+              }
+            ],
+            GrayscaleEnhancementModes: [
+              {
+                Mode: "GEM_SHARPEN_SMOOTH",
+                SharpenBlockSizeX: 3,
+                SharpenBlockSizeY: 3,
+                SmoothBlockSizeX: 3,
+                SmoothBlockSizeY: 3,
+              }
+            ]
         }
         ], 
         "DocumentNormalizerTaskSettingOptions": [
@@ -132,7 +169,16 @@
                     "MinQuadrilateralAreaRatio" : 20
                 }
             ],
-            "ExpectedDocumentsCount":1
+            "ExpectedDocumentsCount":1,
+            ContentType: "CT_DOCUMENT",
+            CornerAngleRange: {
+              MaxValue: 110,
+              MinValue: 70,
+            },
+            DeskewMode: {
+              ContentDirection: 0,
+              Mode: "DM_PERSPECTIVE_CORRECTION",
+            }
           },
           {
             "Name": "task-normalize-docs",
