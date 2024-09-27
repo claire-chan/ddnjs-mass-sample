@@ -202,20 +202,13 @@
             Timeout: 10000,
           },
           {
-            "Name": "NormalizeDocument_Default",
-            "ImageROIProcessingNameArray": ["roi-normalize-docs"]
+            Name: "NormalizeDocument_Default",
+            ImageROIProcessingNameArray: ["roi-normalize-docs"]
           }
         ],
           DocumentNormalizerTaskSettingOptions: [
             {
-              QuadrilateralDetectionModes:
-                [
-                  {
-                    "Mode": "QDM_GENERAL",
-                    "MinQuadrilateralAreaRatio": 20
-                  }
-                ],
-              ExpectedDocumentsCount: 1,
+
               BaseDocumentNormalizerTaskSettingName: "",
               Brightness: 0,
               ColourMode: "ICM_COLOUR",
@@ -237,11 +230,14 @@
               MaxThreadsInOneTask: 4,
               Name: "task-detect-document-boundaries",
               PageSize: [-1, -1],
-              QuadrilateralDetectionModes: [
-                {
-                  Mode: "QDM_GENERAL",
-                },
-              ],
+              QuadrilateralDetectionModes:
+                [
+                  {
+                    "Mode": "QDM_GENERAL",
+                    "MinQuadrilateralAreaRatio": 20
+                  }
+                ],
+              ExpectedDocumentsCount: 1,
               SectionImageParameterArray: [
                 {
                   ContinueWhenPartialResultsGenerated: 1,
@@ -266,8 +262,8 @@
               },
             },
             {
-              "Name": "task-normalize-docs",
-              "StartSection": "ST_DOCUMENT_NORMALIZATION"
+              Name: "task-normalize-docs",
+              StartSection: "ST_DOCUMENT_NORMALIZATION"
             }
           ],
             GlobalParameter: {
@@ -403,8 +399,8 @@
               TaskSettingNameArray: ["task-detect-document-boundaries"],
             },
             {
-              "Name": "roi-normalize-docs",
-              "TaskSettingNameArray": ["task-normalize-docs"]
+              Name: "roi-normalize-docs",
+              TaskSettingNameArray: ["task-normalize-docs"]
             }
           ],
     };
